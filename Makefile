@@ -1,5 +1,5 @@
 CC=gcc
-IN=main.c readfuncs.c convertfuncs.c writefuncs.c
+IN=main.c texterfuncs.c stringfuncs.c help.c
 OUT=texter
 ARGS_OUT=-o
 
@@ -7,4 +7,4 @@ all: build
 
 build:
 
-	$(CC) $(IN) $(ARGS_OUT) $(OUT)
+	$(CC) -g $(IN) $(ARGS_OUT) $(OUT)
