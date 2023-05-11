@@ -1,7 +1,7 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include"stringfuncs.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "stringfuncs.h"
 
 #define MAX_LINE_LENGTH 512
 #define COLUMN_WIDTH 20
@@ -17,13 +17,13 @@ void cout(const char *in, const char *out)
 
     fputs(C_FILE_BEGIN, FileOutput);
 
-   while((ch = fgetc(FileInput)) != EOF)
-   {
-        
-        if(ch == 34)
+    while ((ch = fgetc(FileInput)) != EOF)
+    {
+
+        if (ch == 34)
             ch = 1;
 
-        if(ch == '\n')
+        if (ch == '\n')
         {
             ch = 34;
             fputs("\\n", FileOutput);
@@ -32,10 +32,9 @@ void cout(const char *in, const char *out)
         }
 
         fputc(ch, FileOutput);
-        
-   }
+    }
 
-   fputs(C_FILE_END, FileOutput);
+    fputs(C_FILE_END, FileOutput);
 
     fclose(FileOutput);
 
@@ -48,30 +47,31 @@ void txtout(const char *in, const char *out)
     FILE *InputFile = fopen(in, "r");
     FILE *OutputFile = fopen(out, "w");
 
-    int counter = 1, ch = 0, columns = colnum(in);
+    int word_len = 0, len = 0, counter = 0, ch = 0;
 
     const int BUFF_SIZE = 512;
 
-    char word[BUFF_SIZE];
+    char line[BUFF_SIZE], clrline[BUFF_SIZE];
 
-    char *clrword;
+    char *word;
 
-    while((fscanf(InputFile, "%s", word)) != EOF)
+    while((fgets(line, BUFF_SIZE, InputFile)))
     {
 
-        if(counter == columns)
-            fputs("\n", OutputFile);
+        word = strtok(line, ",");
 
-        
-        fprintf(OutputFile, "%s", word);
-        ++counter;
-           
+        while(word)
+        {
 
+            word_len = strlen(word);
+            fprintf(OutputFile, "%-*s", 20, word);
+            word = strtok(NULL, ",");
+        }
+        fprintf(OutputFile, "%s", "\n");
     }
 
     fclose(InputFile);
     fclose(OutputFile);
-
 }
 
 void htmlout(const char *in, const char *out)
