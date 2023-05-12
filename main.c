@@ -18,15 +18,23 @@ int main(int argc, char *argv[])
 
     if(argc != 5)
     {
-        printf("Неверное количество аргументов.\n");
+        fprintf(stdout, "Неверное количество аргументов.\n");
         showhelp();
     }else if(!(strcmp(argv[4], "COUT")))
+    {
+        fprintf(stdout, "Выбран формат для генерации файла .c\n");
         cout(argv[1], argv[3]);
+    }
     else if(!(strcmp(argv[4], "TXTOUT")))
+    {
+        fprintf(stdout, "Выбран формат для генерации файла .txt\n");
         txtout(argv[1], argv[3]);
+    }
     else if(!(strcmp(argv[4], "HTMLOUT")))
+    {
+        fprintf(stdout, "Выбран формат для генерации файла .html\n");
         htmlout(argv[1], argv[3]);
-
+    }
     return 0;
 
 }

@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-int colnum(const char *file)
+int colnum(const char *file)//функция для подсчёта столбцов в файле
 {
     FILE *fp = fopen(file, "r");
 

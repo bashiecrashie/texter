@@ -1,1 +1,1 @@
-int colnum(const char *file);
+int colnum(const char *file);//Объявление функции для подсчёта столбцов
