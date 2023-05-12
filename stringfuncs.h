@@ -1,1 +1,0 @@
-char * clearstring(const char *str);
