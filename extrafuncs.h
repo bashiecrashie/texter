@@ -1,0 +1,1 @@
+int colnum(const char *file);
