@@ -1,5 +1,5 @@
 CC=gcc
-IN=main.c texterfuncs.c stringfuncs.c help.c
+IN=main.c texterfuncs.c extrafuncs.c help.c
 OUT=texter
 ARGS_OUT=-o
 
